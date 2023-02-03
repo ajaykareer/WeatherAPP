@@ -10,7 +10,7 @@ function getWeather(city) {
   cityName2.innerHTML = city;
   Promise.all([
     fetch(
-      "http://api.weatherapi.com/v1/astronomy.json?key=70ebb746f81e415f822235122231801&q=" +
+      "https://api.weatherapi.com/v1/astronomy.json?key=70ebb746f81e415f822235122231801&q=" +
         city
     ).then((response) => response.json()),
     fetch(
@@ -50,7 +50,7 @@ const getWeather2 = () => {
   cityName2.innerHTML = "Vancouver";
   Promise.all([
     fetch(
-      "http://api.weatherapi.com/v1/astronomy.json?key=70ebb746f81e415f822235122231801&q=Vancouver"
+      "https://api.weatherapi.com/v1/astronomy.json?key=70ebb746f81e415f822235122231801&q=Vancouver"
     ).then((response) => response.json()),
     fetch(
       "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Vancouver",
@@ -82,7 +82,7 @@ const getWeather3 = () => {
   cityName2.innerHTML = "Montreal";
   Promise.all([
     fetch(
-      "http://api.weatherapi.com/v1/astronomy.json?key=70ebb746f81e415f822235122231801&q=Montreal"
+      "https://api.weatherapi.com/v1/astronomy.json?key=70ebb746f81e415f822235122231801&q=Montreal"
     ).then((response) => response.json()),
     fetch(
       "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Montreal",
