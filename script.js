@@ -5,32 +5,38 @@ const options = {
     "X-RapidAPI-Host": "weather-by-api-ninjas.p.rapidapi.com",
   },
 };
-
-const getWeather = (city) => {
+function getWeather(city) {
   cityName.innerHTML = city;
   cityName2.innerHTML = city;
-  fetch(
-    "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=" + city,
-    options
-  )
-    .then((response) => response.json())
-    .then((response) => {
-      console.log(response);
-
-      cloud_pct.innerHTML = response.cloud_pct;
-      feels_like.innerHTML = response.feels_like;
-      humidity.innerHTML = response.humidity;
-      max_temp.innerHTML = response.max_temp;
-      min_temp.innerHTML = response.min_temp;
-      sunrise.innerHTML = response.sunrise;
-      sunset.innerHTML = response.sunset;
-      temp.innerHTML = response.temp;
-      wind_degrees.innerHTML = response.wind_degrees;
-      wind_speed.innerHTML = response.wind_speed;
+  Promise.all([
+    fetch(
+      "http://api.weatherapi.com/v1/astronomy.json?key=70ebb746f81e415f822235122231801&q=" +
+        city
+    ).then((response) => response.json()),
+    fetch(
+      "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=" + city,
+      options
+    ).then((response) => response.json()),
+  ])
+    .then((values) => {
+      console.log(values);
+      data = values;
+      console.log(data[1].cloud_pct);
+      console.log(data[0].astronomy.astro.sunrise);
+      cloud_pct.innerHTML = data[1].cloud_pct;
+      feels_like.innerHTML = data[1].feels_like;
+      humidity.innerHTML = data[1].humidity;
+      max_temp.innerHTML = data[1].max_temp;
+      min_temp.innerHTML = data[1].min_temp;
+      sunrise.innerHTML = data[0].astronomy.astro.sunrise;
+      sunset.innerHTML = data[0].astronomy.astro.sunset;
+      moonrise.innerHTML = data[0].astronomy.astro.moonrise;
+      moonset.innerHTML = data[0].astronomy.astro.moonset;
+      temp.innerHTML = data[1].temp;
+      wind_speed.innerHTML = data[1].wind_speed;
     })
     .catch((err) => console.error(err));
-};
-
+}
 submit.addEventListener("click", (e) => {
   /*it will stop page from reloading */
   e.preventDefault();
@@ -42,24 +48,31 @@ getWeather("Toronto");
 const getWeather2 = () => {
   cityName.innerHTML = "Vancouver";
   cityName2.innerHTML = "Vancouver";
-  fetch(
-    "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=vancouver",
-    options
-  )
-    .then((response) => response.json())
-    .then((response) => {
-      console.log(response);
-
-      cloud_pct.innerHTML = response.cloud_pct;
-      feels_like.innerHTML = response.feels_like;
-      humidity.innerHTML = response.humidity;
-      max_temp.innerHTML = response.max_temp;
-      min_temp.innerHTML = response.min_temp;
-      sunrise.innerHTML = response.sunrise;
-      sunset.innerHTML = response.sunset;
-      temp.innerHTML = response.temp;
-      wind_degrees.innerHTML = response.wind_degrees;
-      wind_speed.innerHTML = response.wind_speed;
+  Promise.all([
+    fetch(
+      "http://api.weatherapi.com/v1/astronomy.json?key=70ebb746f81e415f822235122231801&q=Vancouver"
+    ).then((response) => response.json()),
+    fetch(
+      "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Vancouver",
+      options
+    ).then((response) => response.json()),
+  ])
+    .then((values) => {
+      console.log(values);
+      data = values;
+      console.log(data[1].cloud_pct);
+      console.log(data[0].astronomy.astro.sunrise);
+      cloud_pct.innerHTML = data[1].cloud_pct;
+      feels_like.innerHTML = data[1].feels_like;
+      humidity.innerHTML = data[1].humidity;
+      max_temp.innerHTML = data[1].max_temp;
+      min_temp.innerHTML = data[1].min_temp;
+      sunrise.innerHTML = data[0].astronomy.astro.sunrise;
+      sunset.innerHTML = data[0].astronomy.astro.sunset;
+      moonrise.innerHTML = data[0].astronomy.astro.moonrise;
+      moonset.innerHTML = data[0].astronomy.astro.moonset;
+      temp.innerHTML = data[1].temp;
+      wind_speed.innerHTML = data[1].wind_speed;
     })
     .catch((err) => console.error(err));
 };
@@ -67,24 +80,38 @@ const getWeather2 = () => {
 const getWeather3 = () => {
   cityName.innerHTML = "Montreal";
   cityName2.innerHTML = "Montreal";
-  fetch(
-    "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=montreal",
-    options
-  )
-    .then((response) => response.json())
-    .then((response) => {
-      console.log(response);
-
-      cloud_pct.innerHTML = response.cloud_pct;
-      feels_like.innerHTML = response.feels_like;
-      humidity.innerHTML = response.humidity;
-      max_temp.innerHTML = response.max_temp;
-      min_temp.innerHTML = response.min_temp;
-      sunrise.innerHTML = response.sunrise;
-      sunset.innerHTML = response.sunset;
-      temp.innerHTML = response.temp;
-      wind_degrees.innerHTML = response.wind_degrees;
-      wind_speed.innerHTML = response.wind_speed;
+  Promise.all([
+    fetch(
+      "http://api.weatherapi.com/v1/astronomy.json?key=70ebb746f81e415f822235122231801&q=Montreal"
+    ).then((response) => response.json()),
+    fetch(
+      "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Montreal",
+      options
+    ).then((response) => response.json()),
+  ])
+    .then((values) => {
+      console.log(values);
+      data = values;
+      console.log(data[1].cloud_pct);
+      console.log(data[0].astronomy.astro.sunrise);
+      cloud_pct.innerHTML = data[1].cloud_pct;
+      feels_like.innerHTML = data[1].feels_like;
+      humidity.innerHTML = data[1].humidity;
+      max_temp.innerHTML = data[1].max_temp;
+      min_temp.innerHTML = data[1].min_temp;
+      sunrise.innerHTML = data[0].astronomy.astro.sunrise;
+      sunset.innerHTML = data[0].astronomy.astro.sunset;
+      moonrise.innerHTML = data[0].astronomy.astro.moonrise;
+      moonset.innerHTML = data[0].astronomy.astro.moonset;
+      temp.innerHTML = data[1].temp;
+      wind_speed.innerHTML = data[1].wind_speed;
     })
     .catch((err) => console.error(err));
 };
+
+// fetch(
+//   "http://api.weatherapi.com/v1/astronomy.json?key=70ebb746f81e415f822235122231801&q=Toronto"
+// );
+
+//     .then ((response)=> response.json())
+//     .then((response)) => console.log(response)
